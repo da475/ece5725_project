@@ -38,5 +38,8 @@ while True:
 
 # close the sockets
 client_socket.close()
-server_socket()
+server_socket.close()
 gp.cleanup()
+
+
+
