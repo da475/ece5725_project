@@ -1,7 +1,6 @@
 
 import RPi.GPIO as gp
 import time
-from datetime import datetime
 
 
 ######  GPIO  ###########
