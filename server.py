@@ -1,5 +1,37 @@
 import bluetooth
 import RPi.GPIO as gp
+import pygame
+import os
+import math
+import time
+
+
+if 1:
+    os.putenv('SDL_VIDEODRIVER', 'fbcon')
+    os.putenv('SDL_FBDEV', '/dev/fb1')
+    os.putenv('SDL_MOUSEDRV', 'TSLIB')
+    os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
+
+
+############ PYGAME #############
+
+MIN_LEVEL = 980
+MAX_LEVEL = 3000
+SCREEN_WIDTH = 320
+SCREEN_HEIGHT = 240
+size = SCREEN_WIDTH, SCREEN_HEIGHT
+BLACK = (0,0,0)
+BLUE = (0, 0, 255)
+rect = (0, 200, SCREEN_WIDTH, 40)       # x, y, width, height
+
+pygame.init()
+screen = pygame.display.set_mode(size)
+
+screen.fill(BLACK)
+pygame.draw.rect(screen, BLUE, rect, 0)
+
+############ PYGAME #############
+
 
 pin_bt = 13
 gp.setmode(gp.BCM)
@@ -26,8 +58,7 @@ print ('recevied connection from ', client_address)
 msg_buffer = client_socket.recv(RECV_SIZE)
 print(msg_buffer)
 
-# send the ack
-#client_socket.send('ACK')
+
 
 # start loop to receive msgs until client closes
 while True:
@@ -36,11 +67,25 @@ while True:
         print 'Client closed, breaking out of the loop'
         break
 
-    print ('recvd the msg ', msg_buffer)
-    msg_buffer = int(msg_buffer)
-    msg_buffer = msg_buffer
-    msg_buffer = str(msg_buffer)
-    client_socket.send(msg_buffer)
+
+    # send the data back to the client
+    print ('\nrecvd the msg ', msg_buffer)
+    water_level = int(msg_buffer)
+    #msg = str(water_level)
+    #client_socket.send(msg)
+
+    # calculate the water level
+    water_level = water_level - MIN_LEVEL
+    water_level = int(water_level / 50)
+    water_level = 20
+    print ('water level is ', water_level)
+    
+    # display on the wall
+    screen.fill(BLACK)
+    rect = (0, 200-water_level, SCREEN_WIDTH, 40+water_level)       # x, y, width, height
+    pygame.draw.rect(screen, BLUE, rect, 0)
+    pygame.display.update()
+    time.sleep(0.2)
 
 
 # close the sockets
