@@ -11,16 +11,16 @@ gp.setmode(gp.BCM)
 #gp.setup(pin_led3, gp.IN)
 
 #gp.setup(17, gp.OUT)
-#gp.setup(5, gp.OUT)
+gp.setup(21, gp.OUT)
 gp.setup(4, gp.OUT)
 #gp.setup(23, gp.IN)
 
 #gp.output(17, gp.HIGH)
 gp.output(4, gp.HIGH)
-#gp.output(4, gp.LOW)
+gp.output(21, gp.HIGH)
 #gp.output(25, gp.HIGH)
 
-time.sleep(5)
+time.sleep(20)
 
 """
 p_red = gp.PWM(pin_ledR, 1)     # 1Hz freq

@@ -6,8 +6,9 @@ gp.setmode(gp.BCM)
 
 # macros
 MIN_DIST = 1000
-MAX_DOST = 2500
-MID_DIST = int((MIN_DIST + MAX_DOST) / 2)
+MAX_DIST = 3000
+MID_DIST = int((MIN_DIST + MAX_DIST) / 2)
+OFFSET = int( (MAX_DIST - MIN_DIST) / 6 )
 
 # pin definitions
 pin_ledR = 4
