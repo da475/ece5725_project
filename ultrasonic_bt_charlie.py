@@ -9,13 +9,15 @@ This file combines all separate modules
 import bluetooth
 import RPi.GPIO as gp
 import time
+from led_charlie import *
 
 gp.setmode(gp.BCM)
 
 # macros
-MIN_DIST = 990
+MIN_DIST = 1000
 MAX_DIST = 3000
 MID_DIST = int((MIN_DIST + MAX_DIST) / 2)
+OFFSET = int( (MAX_DIST - MIN_DIST) / 5 )
 
 # pin definitions
 pin_ledR = 4
@@ -64,6 +66,7 @@ gp.add_event_detect(pin_quit, gp.FALLING, callback=gp18_cb, bouncetime=300)
 
 ############### SENSOR ########################
 # Sensor callback
+"""
 def gp26_cb(channel):
     global start_time
     global duration
@@ -85,6 +88,27 @@ def gp26_cb(channel):
 
         else:
             duration = MIN_DIST
+        print ('dur in us is ', duration)
+        
+
+gp.add_event_detect(gp_echo, gp.BOTH, callback=gp26_cb, bouncetime=1)
+"""
+
+############### SENSOR ########################
+# Sensor callback
+def gp26_cb(channel):
+    global start_time
+    global duration
+
+    value = gp.input(gp_echo)
+    #print("input changed to = ", value)
+
+    if value == gp.HIGH:
+        start_time = time.time()
+    else:
+        end_time = time.time()
+        duration = (end_time - start_time) * 1000000
+        duration = int(duration)
         print ('dur in us is ', duration)
         
 
@@ -129,17 +153,17 @@ def start_sensing():
             charlie_obj.glow_led5()
 
         #default case
-        else:
-            print ('Out of range')
+        #else:
+           # print ('Out of range')
 
-      # send the data to the server
-      client_socket.send(str(duration))
-      #msg_buffer = client_socket.recv(RECV_SIZE)
-      #print ('C: received from server ', msg_buffer)
+        # send the data to the server
+        client_socket.send(str(duration))
+        #msg_buffer = client_socket.recv(RECV_SIZE)
+        #print ('C: received from server ', msg_buffer)
 
-      if quit_signal == 1:
-          print 'Quit pressed, breaking out of the loop'
-          break
+        if quit_signal == 1:
+            print 'Quit pressed, breaking out of the loop'
+            break
 
     # cleanup code
     # close the sockets

@@ -7,7 +7,7 @@ led_x1 = 21
 led_x2 = 20
 led_x3 = 16
 led_x4 = 23
-delay = 3
+delay = 2
 
 class charlie():
     def __init__(self):
@@ -88,10 +88,8 @@ class charlie():
         print ('led12')
         time.sleep(delay)
 
-
 """
 co = charlie()
-
 co.glow_led1()
 co.glow_led2()
 co.glow_led3()
@@ -99,6 +97,13 @@ co.glow_led4()
 co.glow_led5()
 co.glow_led6()
 
+
+co.glow_led7()
+co.glow_led8()
+co.glow_led9()
+co.glow_led10()
+co.glow_led11()
+co.glow_led12()
 """
 
 gp.cleanup()

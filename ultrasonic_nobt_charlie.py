@@ -111,8 +111,8 @@ def main():
             charlie_obj.glow_led5()
 
         #default case
-        else:
-            print ('Out of range')
+        #else:
+            #print ('Out of range')
 
         if quit_signal == 1:
             break
