@@ -12,7 +12,7 @@ gp.setmode(gp.BCM)
 MIN_DIST = 1000
 MAX_DIST = 3000
 MID_DIST = int((MIN_DIST + MAX_DIST) / 2)
-OFFSET = int( (MAX_DIST - MIN_DIST) / 6 )
+OFFSET = int( (MAX_DIST - MIN_DIST) / 5 )
 
 # pin definitions
 pin_ledR = 4
@@ -93,36 +93,26 @@ def main():
         # level 1
         if duration < MIN_DIST + OFFSET:
             charlie_obj.glow_led1()
-            charlie_obj.glow_led7()
 
         # level 2
         elif duration < MIN_DIST + (OFFSET*2):
             charlie_obj.glow_led2()
-            charlie_obj.glow_led8()
 
         # level 3
         elif duration < MIN_DIST + (OFFSET*3):
             charlie_obj.glow_led3()
-            charlie_obj.glow_led9()
 
         # level 4
         elif duration < MIN_DIST + (OFFSET*4):
             charlie_obj.glow_led4()
-            charlie_obj.glow_led10()
 
         # level 5
         elif duration < MIN_DIST + (OFFSET*5):
             charlie_obj.glow_led5()
-            charlie_obj.glow_led11()
-
-        # level 6
-        elif duration < MIN_DIST + (OFFSET*6):
-            charlie_obj.glow_led6()
-            charlie_obj.glow_led12()
 
         #default case
         else:
-            charlie_obj.glow_led5()
+            print ('Out of range')
 
         if quit_signal == 1:
             break

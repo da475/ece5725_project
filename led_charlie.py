@@ -32,40 +32,41 @@ class charlie():
         time.sleep(delay)
 
     def glow_led2(self):
-        self.glow_led(led_x2, led_x3, led_x1, led_x4)    # led2
+        self.glow_led(led_x2, led_x1, led_x3, led_x4)    # led4
         print ('led2')
         time.sleep(delay)
 
     def glow_led3(self):
-        self.glow_led(led_x3, led_x4, led_x1, led_x2)    # led3
+        self.glow_led(led_x2, led_x3, led_x1, led_x4)    # led2
         print ('led3')
         time.sleep(delay)
 
     def glow_led4(self):
-        self.glow_led(led_x2, led_x1, led_x3, led_x4)    # led4
+        self.glow_led(led_x3, led_x2, led_x1, led_x4)    # led5
         print ('led4')
         time.sleep(delay)
 
     def glow_led5(self):
-        self.glow_led(led_x3, led_x2, led_x1, led_x4)    # led5
+        self.glow_led(led_x1, led_x3, led_x2, led_x4)    # led7
         print ('led5')
         time.sleep(delay)
 
     def glow_led6(self):
-        self.glow_led(led_x4, led_x3, led_x1, led_x2)    # led6
+        self.glow_led(led_x3, led_x1, led_x2, led_x4)    # led8
         print ('led6')
         time.sleep(delay)
 
+
+
     def glow_led7(self):
-        self.glow_led(led_x1, led_x3, led_x2, led_x4)    # led7
+        self.glow_led(led_x3, led_x4, led_x1, led_x2)    # led3
         print ('led7')
         time.sleep(delay)
 
     def glow_led8(self):
-        self.glow_led(led_x3, led_x1, led_x2, led_x4)    # led8
+        self.glow_led(led_x4, led_x3, led_x1, led_x2)    # led6
         print ('led8')
         time.sleep(delay)
-
 
     def glow_led9(self):
         self.glow_led(led_x2, led_x4, led_x1, led_x3)    # led9
@@ -86,5 +87,20 @@ class charlie():
         self.glow_led(led_x4, led_x1, led_x2, led_x3)    # led12
         print ('led12')
         time.sleep(delay)
+
+
+"""
+co = charlie()
+
+co.glow_led1()
+co.glow_led2()
+co.glow_led3()
+co.glow_led4()
+co.glow_led5()
+co.glow_led6()
+
+"""
+
+gp.cleanup()
 
 
