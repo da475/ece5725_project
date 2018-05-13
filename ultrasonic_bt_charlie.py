@@ -1,4 +1,11 @@
 ################
+"""
+This file combines all separate modules
+- Ultrasonic sensor
+- Bluetooth module
+- Charlieplexing class
+"""
+
 import bluetooth
 import RPi.GPIO as gp
 import time
@@ -86,46 +93,65 @@ gp.add_event_detect(gp_echo, gp.BOTH, callback=gp26_cb, bouncetime=1)
 
 ############### SENSOR ########################
 
-gp.output(gp_trigger, gp.LOW)
-
-while(1):
-
-    # send the trigger pulse
-    gp.output(gp_trigger, gp.HIGH)
-    time.sleep(20/1000000.0)
+def start_sensing():
     gp.output(gp_trigger, gp.LOW)
+    charlie_obj = charlie()
+    #charlie_obj.glow_led1()
+    #charlie_obj.glow_led2()
 
-    # wait for 100ms
-    time.sleep(0.1)
+    while(1):
+        # send the trigger pulse
+        gp.output(gp_trigger, gp.HIGH)
+        time.sleep(20/1000000.0)
+        gp.output(gp_trigger, gp.LOW)
 
-    # control the LEDs
-    if duration > MID_DIST:
-        # flag green signal
-        #p_green.ChangeFrequency(0.6)
-        p_green.ChangeDutyCycle(50)
-        p_red.ChangeDutyCycle(0)
-    else:
-        # flag red signal
-        #p_green.ChangeFrequency(0.6)
-        p_red.ChangeDutyCycle(50)
-        p_green.ChangeDutyCycle(0)
+        # wait for 100ms
+        time.sleep(0.1)
 
-    # send the data to the server
-    client_socket.send(str(duration))
-    #msg_buffer = client_socket.recv(RECV_SIZE)
-    #print ('C: received from server ', msg_buffer)
+        # level 1
+        if duration < MIN_DIST + OFFSET:
+            charlie_obj.glow_led1()
 
-    if quit_signal == 1:
-        print 'Quit pressed, breaking out of the loop'
-        break
-        
+        # level 2
+        elif duration < MIN_DIST + (OFFSET*2):
+            charlie_obj.glow_led2()
 
-# cleanup code
-# close the sockets
-time.sleep(0.2)
-client_socket.close()
-p_red.stop()
-p_green.stop()
-gp.cleanup()
+        # level 3
+        elif duration < MIN_DIST + (OFFSET*3):
+            charlie_obj.glow_led3()
+
+        # level 4
+        elif duration < MIN_DIST + (OFFSET*4):
+            charlie_obj.glow_led4()
+
+        # level 5
+        elif duration < MIN_DIST + (OFFSET*5):
+            charlie_obj.glow_led5()
+
+        #default case
+        else:
+            print ('Out of range')
+
+      # send the data to the server
+      client_socket.send(str(duration))
+      #msg_buffer = client_socket.recv(RECV_SIZE)
+      #print ('C: received from server ', msg_buffer)
+
+      if quit_signal == 1:
+          print 'Quit pressed, breaking out of the loop'
+          break
+
+    # cleanup code
+    # close the sockets
+    time.sleep(0.2)
+    client_socket.close()
+
+    # stop pwms (todo remove it later)
+    p_red.stop()
+    p_green.stop()
+    gp.cleanup()
+
+
+start_sensing()
 
 
