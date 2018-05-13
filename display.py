@@ -12,7 +12,6 @@ if 1:
     os.putenv('SDL_MOUSEDEV', '/dev/input/touchscreen')
 
 ######  GPIO  ###########
-
 gp.setmode(gp.BCM)
 gp.setup(17, gp.IN,pull_up_down=gp.PUD_UP)
 
@@ -35,8 +34,9 @@ BLUE = (0, 0, 255)
 rect = (0, 200, SCREEN_WIDTH, 40)       # x, y, width, height
 
 pygame.init()
-pygame.mouse.set_visible(False)
+
 screen = pygame.display.set_mode(size)
+pygame.mouse.set_visible(False)
 screen.fill(BLACK)
 
 
