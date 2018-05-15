@@ -92,7 +92,6 @@ br1.left = 30
 
 
 count = 0
-offset = 937
 
 while(1):
 
@@ -126,10 +125,8 @@ while(1):
   screen.blit(text_surface, rect)
 
 
-  # display the current number 
-  level = offset + (count * 100)
-  level = float(level / 500.0)
-  number_str = str(level)
+  # display the current number
+  number_str = str(count)
   text_surface = current_number_font.render(number_str, True, BLUE)
   rect = text_surface.get_rect(center=current_number_pos)
   screen.blit(text_surface, rect)
