@@ -12,7 +12,7 @@ gp.setmode(gp.BCM)
 MIN_DIST = 1000
 MAX_DIST = 3000
 MID_DIST = int((MIN_DIST + MAX_DIST) / 2)
-OFFSET = int( (MAX_DIST - MIN_DIST) / 5 )
+OFFSET = int( (MAX_DIST - MIN_DIST) / 6 )
 
 # pin definitions
 pin_ledR = 4
@@ -90,25 +90,35 @@ def main():
         # wait for 100ms
         time.sleep(0.1)
 
-        # level 1
+        # level 1 (when water level is too high)
         if duration < MIN_DIST + OFFSET:
-            charlie_obj.glow_led1()
+            charlie_obj.glow_led8()
+            charlie_obj.glow_led11()
 
         # level 2
         elif duration < MIN_DIST + (OFFSET*2):
-            charlie_obj.glow_led2()
+            charlie_obj.glow_led12()
+            charlie_obj.glow_led9()
 
         # level 3
         elif duration < MIN_DIST + (OFFSET*3):
-            charlie_obj.glow_led3()
+            charlie_obj.glow_led10()
+            charlie_obj.glow_led7()
 
         # level 4
         elif duration < MIN_DIST + (OFFSET*4):
-            charlie_obj.glow_led4()
+            charlie_obj.glow_led6()
+            charlie_obj.glow_led5()
 
         # level 5
         elif duration < MIN_DIST + (OFFSET*5):
-            charlie_obj.glow_led5()
+            charlie_obj.glow_led4()
+            charlie_obj.glow_led1()
+
+        # level 6
+        elif duration < MIN_DIST + (OFFSET*5):
+            charlie_obj.glow_led2()
+            charlie_obj.glow_led3()
 
         #default case
         #else:
