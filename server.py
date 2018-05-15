@@ -88,14 +88,12 @@ br1 = fish.get_rect(center = fish_pos)
 br1.left = 30
 
 
-count = 0
-offset = 937
-
 ################  SENSOR CAPPING #################
 
 
 MIN_LEVEL = 980
-MAX_LEVEL = 3000
+MAX_LEVEL = 3500
+prev_water_level = 1800
 
 
 ############ BLUETOOTH #############
@@ -127,7 +125,6 @@ msg_buffer = client_socket.recv(RECV_SIZE)
 print(msg_buffer)
 
 
-
 # start loop to receive msgs until client closes
 while True:
     msg_buffer = client_socket.recv(RECV_SIZE)
@@ -143,18 +140,22 @@ while True:
     #client_socket.send(msg)
 
     # calculate the water level
-    water_level = water_level - MIN_LEVEL
-    water_level = int(water_level / 50)
+    #water_level = water_level - MIN_LEVEL
+    #water_level = int(water_level / 50)
 
 
     # cap it
 
     if water_level < MIN_LEVEL:
-        water_level = MIN_LEVEL
+        water_level = prev_water_level
+    elif water_level > MAX_LEVEL:
+        water_level = prev_water_level
+    else:
+        prev_water_level = water_level 
 
-
-    if water_level > MAX_LEVEL:
-        water_level = MAX_LEVEL
+    # MAX level is actually the MIN because when distance
+    # is maximum, the level is minimum
+    #water_level = MAX_LEVEL + MIN_LEVEL - water_level
  
 
     """   
@@ -180,9 +181,10 @@ while True:
     screen.blit(fish , br1)
    
 
+
     # display level
-    count = water_level
-    rect = (0, 200-count, SCREEN_WIDTH, 40+count)       # x, y, width, height
+    display_level = int(water_level / 50)
+    rect = (0, 200-display_level, SCREEN_WIDTH, 40+display_level)       # x, y, width, height
     pygame.draw.rect(screen, BLUE, rect, 0)
     pygame.display.update()
 
@@ -201,8 +203,7 @@ while True:
 
 
     # display the current number 
-    level = offset + (count * 100)
-    level = float(level / 500.0)
+    level = float(water_level / 600.0)
     number_str = str(level)
     text_surface = current_number_font.render(number_str, True, BLUE)
     rect = text_surface.get_rect(center = current_number_pos)
@@ -214,9 +215,6 @@ while True:
     time.sleep(0.2)
     screen.fill(YELLOW)
 
-
-    count = count + 1
-    count = count % 20
 
     if signal == 1:
         break
