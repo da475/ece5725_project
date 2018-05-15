@@ -37,10 +37,10 @@ while True:
         break
 
     print ('recvd the msg ', msg_buffer)
-    msg_buffer = int(msg_buffer)
-    msg_buffer = msg_buffer
-    msg_buffer = str(msg_buffer)
-    client_socket.send(msg_buffer)
+    #msg_buffer = int(msg_buffer)
+    #msg_buffer = msg_buffer
+    #msg_buffer = str(msg_buffer)
+    #client_socket.send(msg_buffer)
 
 
 # close the sockets

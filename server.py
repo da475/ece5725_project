@@ -155,7 +155,7 @@ while True:
 
     # MAX level is actually the MIN because when distance
     # is maximum, the level is minimum
-    #water_level = MAX_LEVEL + MIN_LEVEL - water_level
+    water_level = MAX_LEVEL + MIN_LEVEL - water_level
  
 
     """   
@@ -169,17 +169,6 @@ while True:
     """
 
     ################  NEW CODE  #####################
-
-    # display fish
-    br1 = br1.move(speed)
-    if br1.left < 0 or br1.right > FISH_WIDTH:
-        speed[0] = -speed[0]
-    
-    if br1.top < 0 or br1.bottom > FISH_HEIGHT:
-        speed[1] = -speed[1]
-
-    screen.blit(fish , br1)
-   
 
 
     # display level
@@ -197,17 +186,28 @@ while True:
 
 
     # display the current range in txt
-    text_surface = current_msg_font.render('FLOOD LEVEL', True, BLUE)
+    text_surface = current_msg_font.render('FLOOD LEVEL (in inches)', True, BLUE)
     rect = text_surface.get_rect(center=current_msg_pos)
     screen.blit(text_surface, rect)
 
 
     # display the current number 
-    level = float(water_level / 600.0)
+    level = float(water_level / 700.0)
     number_str = str(level)
     text_surface = current_number_font.render(number_str, True, BLUE)
     rect = text_surface.get_rect(center = current_number_pos)
     screen.blit(text_surface, rect)
+
+    # display fish
+    br1 = br1.move(speed)
+    if br1.left < 0 or br1.right > FISH_WIDTH:
+        speed[0] = -speed[0]
+    
+    if br1.top < 0 or br1.bottom > FISH_HEIGHT:
+        speed[1] = -speed[1]
+
+    screen.blit(fish , br1)
+   
 
 
     pygame.display.flip()
