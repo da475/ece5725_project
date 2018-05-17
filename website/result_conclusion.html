@@ -65,7 +65,7 @@
 									<h4><font color = "Black">Result</h4>
 									<p>Over all the project was executed succesfully in measuring the water level and communicating these values to the server to be displayed on the flood wall. Various levels of testing were implemented on the system. Initially we tested the performance of the system by moving an object from the ultrasonic sensor and the result was precise. Later we tested the system on the river prototype model which also resulted in good performance. Also, the LED's were correctly synchronized with the increase or decrease in the water level and performeed accurately in communicated the change in the river height.</br></br>
 
-									Through this project we had a wonderful oppurtuniy to work with the Landscape Architecture department and have an actual industry like experience. We also feel an extension of this project by integrating other sensor systems like fish detection can have a huge environmental impact and could potentially save the endangered fish species and thus we are grateful we had an oppurtunity to work on such an impetus cause. 
+									Through this project we had a wonderful oppurtuniy to work with the Landscape Architecture department and have an actual industry like experience. We also feel an extension of this project by integrating other sensor systems like fish detection can have a huge environmental impact and could potentially save the endangered fish species and thus we are grateful we had an oppurtunity to work on such an impetus cause.
 
 
 									</p></br></br>
@@ -80,6 +80,22 @@
 4. <b><font color = "Black">Out-of-range sensor values:</font></b>We observed a peculiar behaviour while sensing the water-level and sending it via bluetooth. Initially, both the RPIs were connected to the monitors to properly track the values being received from the ultrasonic sensor and the values received by the server. At that time, the values were very accurate and varied according to the water-level changes. But as we removed the monitor from the client RPi, we observed a significant noise in the sensor readings. The observation was 100% reproducible i.e. as the monitor was connected back, the sensor values became proper and noise came back when monitor was disconnected. As discussed with the professor, we think the RPi is waiting for an HDMI connection by default which might cause some unbounded delay in sensor processing. When HDMI is connected, the wait is avoided and sensor might be getting more processing time by CPU. We could have tried to configure the HDMI setting in the board but couldn’t do it due to the lack of time.</br>
 </p>
 
+<h4><font color="Black"> Future Work</h4>
+<p> There is a large scope for extension in this project. The model that we have developed basically completes the entire loop of the responsive floodplain idea but still it is an initial prototype. One major scope for extension is connection of multiple sensors since the current system can support multiple clients. There is also a wide scope for the type of sensors that could be included like for example detecting water quality in terms level of oxygen and nitrogen which can be extremely useful especially considering the impact of globalization on river ecology. Also, Susquehanna river is home to many endangered fish species and developing effective fish detection sensors by utilising RFID tags can also have prudential impact on protecting the river ecology. </br></br>
+
+Additionaly, the water level detection sensor that we have used can be replaced by LIDAR sensors to enable more accurate and precise readings when the model is to be imlpemented on the real river. Also bluetooth can be replaced by radio communication to enable long distance interaction between the flood wall and the sensor systems. Over all we feel like with by implementing necessary changes the responsive flood plain model can definetely have a significant impact in strongly connecting the community with the river environment and thus enabling mutual benefits for both.</br></br>
+</p>
+
+<h4><font color="Black"> Work Distribution </h4>
+
+Anwitha Paruchuri: Worked on getting the LED system running by desgning and building of the charlieplexing circuit. Also worked on setting up of the ultrasonic sensor to measure the change in the water levels and helped in the overall hardware assembly of the sensor model essentially the integration of the ultrasonic sensor with the LED system. Also helped in designing the display wall using python games to efficiently portray the communicated water level information.
+
+Deepak Agarwal: Worked on Bluetooth socket programming and basically in getting the display wall and the sensor system to get integrated. Also worked on the designing of the display wall using python games and helped in the hardware bulding of the sensor prototype especially soldering of all the LED's and mechanical assembly of the pipe. Also, helped in the LED system design and setting up of the ultrasonic sensor. </br></br>
+
+Website: Anwitha made the initial template for the website. Content was contributed equally by both.
+</br></br>
+
+ 
 
 </section>
 	</body >
