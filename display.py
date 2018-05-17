@@ -1,4 +1,12 @@
 
+# ECE5725 Final Project Spring'18
+# Date: 15th May 2018
+# Authors: Anwitha Paruchuri and Deepak Agarwal
+# NetIds: ap2286 and da475
+# File: display.py
+# Desc: Python script to implement the flood wall on display monitor
+#       Note: This is just a helper file
+
 import RPi.GPIO as gp
 import pygame
 import os

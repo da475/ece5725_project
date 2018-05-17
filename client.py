@@ -1,3 +1,14 @@
+
+# ECE5725 Final Project Spring'18
+# Date: 15th May 2018
+# Authors: Anwitha Paruchuri and Deepak Agarwal
+# NetIds: ap2286 and da475
+# File: client.py
+# Desc: Python script to implement the client side of the bluetooth module
+#       Note: This is just a helper file, not the main file
+
+
+
 import bluetooth
 import RPi.GPIO as gp
 import time

@@ -22,25 +22,6 @@ gp.output(21, gp.HIGH)
 
 time.sleep(20)
 
-"""
-p_red = gp.PWM(pin_ledR, 1)     # 1Hz freq
-p_green = gp.PWM(pin_ledG, 1)     # 1Hz freq
-
-p_red.start(50)                 # start with 50% duty cycle
-p_green.start(50)                 # start with 50% duty cycle
-time.sleep(3)
-
-p_red.ChangeFrequency(2)
-p_green.ChangeFrequency(0.6)
-time.sleep(3)
-
-p_red.ChangeFrequency(4)
-p_green.ChangeFrequency(0.3)
-time.sleep(3)
-
-p_red.stop()
-p_green.stop()
-"""
 
 gp.cleanup()
 

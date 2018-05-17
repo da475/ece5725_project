@@ -1,3 +1,16 @@
+
+
+# ECE5725 Final Project Spring'18
+# Date: 15th May 2018
+# Authors: Anwitha Paruchuri and Deepak Agarwal
+# NetIds: ap2286 and da475
+# File: server.py
+# Desc: Python script to implement the base station in RPI-3
+#       It does the following:
+#       - Sets up the bluetooth connection
+#       - Receives sensor values from the client and process them
+#       - Implements the flood wall via pygames library
+
 import bluetooth
 import RPi.GPIO as gp
 import pygame
@@ -5,6 +18,8 @@ import os
 import math
 import time
 
+
+# Display settings
 
 piTFT = 0
 
@@ -76,7 +91,7 @@ current_msg_font = pygame.font.Font(None, 25)
 current_number_pos = (220, 60)
 current_number_font = pygame.font.Font(None, 25)
 
-# FISH
+# FISH settings
 FISH_WIDTH = 300
 FISH_HEIGHT = 20
 fish_pos = (30, 180)
@@ -158,16 +173,6 @@ while True:
     water_level = MAX_LEVEL + MIN_LEVEL - water_level
  
 
-    """   
-    # display on the wall
-    screen.fill(BLACK)
-    rect = (0, 200-water_level, SCREEN_WIDTH, 40+water_level)       # x, y, width, height
-    pygame.draw.rect(screen, BLUE, rect, 0)
-    pygame.display.update()
-    time.sleep(0.2)
-
-    """
-
     ################  NEW CODE  #####################
 
 
@@ -207,14 +212,9 @@ while True:
         speed[1] = -speed[1]
 
     screen.blit(fish , br1)
-   
-
-
     pygame.display.flip()
-
     time.sleep(0.2)
     screen.fill(YELLOW)
-
 
     if signal == 1:
         break

@@ -1,10 +1,16 @@
-################
-"""
-This file combines all separate modules
-- Ultrasonic sensor
-- Bluetooth module
-- Charlieplexing class
-"""
+
+
+# ECE5725 Final Project Spring'18
+# Date: 15th May 2018
+# Authors: Anwitha Paruchuri and Deepak Agarwal
+# NetIds: ap2286 and da475
+# File: ultrasonic_bt_charlie.py
+# Desc: Python script to implement the client side in RPi-0
+#       It does the following:
+#       - Sets up the bluetooth connection with the server
+#       - Configures the ultrasonic sensor and sets the callback method
+#       - Receives sensor values and sends it over the bluetooth
+#       - Creates object of the class charlie() to configure the LEDs
 
 import bluetooth
 import RPi.GPIO as gp
@@ -66,36 +72,6 @@ gp.add_event_detect(pin_quit, gp.FALLING, callback=gp18_cb, bouncetime=300)
 
 ############### SENSOR ########################
 # Sensor callback
-"""
-def gp26_cb(channel):
-    global start_time
-    global duration
-
-    value = gp.input(gp_echo)
-    #print("input changed to = ", value)
-
-    if value == gp.HIGH:
-        start_time = time.time()
-    else:
-        end_time = time.time()
-        duration = (end_time - start_time) * 1000000
-
-        if(MIN_DIST<=duration<=MAX_DIST):
-            duration = int(duration)
-
-        elif(duration>MAX_DIST):
-            duration = MAX_DIST
-
-        else:
-            duration = MIN_DIST
-        print ('dur in us is ', duration)
-        
-
-gp.add_event_detect(gp_echo, gp.BOTH, callback=gp26_cb, bouncetime=1)
-"""
-
-############### SENSOR ########################
-# Sensor callback
 def gp26_cb(channel):
     global start_time
     global duration
@@ -110,7 +86,6 @@ def gp26_cb(channel):
         duration = (end_time - start_time) * 1000000
         duration = int(duration)
         print ('dur in us is ', duration)
-        
 
 gp.add_event_detect(gp_echo, gp.BOTH, callback=gp26_cb, bouncetime=1)
 

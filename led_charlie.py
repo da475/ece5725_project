@@ -1,3 +1,14 @@
+
+# ECE5725 Final Project Spring'18
+# Date: 15th May 2018
+# Authors: Anwitha Paruchuri and Deepak Agarwal
+# NetIds: ap2286 and da475
+# File: led_charlie.py
+# Desc: Python script to implement the charlieplexing for 4-pins
+#       It was implemented in a class charlie() whose object is
+#       instantiated in the client code to configure the LEDs.
+#       Adopting the OOPS methodology helped a lot in code-reuse.
+
 import RPi.GPIO as gp
 import time
 
