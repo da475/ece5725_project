@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled Document</title>
+    <!-- Bootstrap -->
+	<link href="css_final.css" rel="stylesheet">
+	<link href="css_final1.css" rel="stylesheet" type="text/css">
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+  </head>
+  <body style="background-color:LightGray ;"  >
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+	<script src="jquery-1.11.3.min.js"></script>
+		<title>ECE 4760: Bluetooth-Controlled Guitar Amp</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	 <body style="background-color: Gray;">
+		<script src="bootstrap.js"></script>
+	<div class="container-fluid" id="wrap">
+	  <nav class="navbar navbar-default">
+	    <div class="container-fluid">
+	      <!-- Brand and toggle get grouped for better mobile display -->
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+	        
+	      <!-- Collect the nav links, forms, and other content for toggling -->
+	      <div class="collapse navbar-collapse" id="defaultNavbar1">
+	        <ul class="nav navbar-nav navbar-right">
+	          <li><a href="index.html"><font color = "black" size="2" >HOME</font></a></li>
+	          <li><a href="intro.html"><font color = "black" size="2" >Objective &amp; Introduction</font></a></li>
+	          <li><a href="design_testing.html"><font color = "black" size="2" >Design &amp; Testing</font></a></li>
+	          <li><a href="result_conclusion.html"><font color = "black" size="2" >Result &amp; Conclusion</font></a></li>
+	          <li><a href="reference.html"><font color = "black" size="2" >Reference &amp; Code Appendix </font> </a></li>
+	          <li><a href="code.html"><font color = "black" size="2" >Code </font> </a></li>
+	          <li><a href="gallery.html"><font color = "black" size="2" >Gallery </font> </a></li>
+	        </ul>
+          </div>
+	      <!-- /.navbar-collapse -->
+        </div>
+	    <!-- /.container-fluid -->
+      </nav>
+
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">								
+										
+									<section id="four">
+									<div class="container">
+									<h4><font color = "Black">Result</h4>
+									<p>Over all the project was executed succesfully in measuring the water level and communicating these values to the server to be displayed on the flood wall. Various levels of testing were implemented on the system. Initially we tested the performance of the system by moving an object from the ultrasonic sensor and the result was precise. Later we tested the system on the river prototype model which also resulted in good performance. Also, the LED's were correctly synchronized with the increase or decrease in the water level and performeed accurately in communicated the change in the river height.</br></br>
+
+									Through this project we had a wonderful oppurtuniy to work with the Landscape Architecture department and have an actual industry like experience. We also feel an extension of this project by integrating other sensor systems like fish detection can have a huge environmental impact and could potentially save the endangered fish species and thus we are grateful we had an oppurtunity to work on such an impetus cause. 
+
+
+									</p></br></br>
+									<h4><font color = "Black">Conclusion</h4>
+									<p>The project progress was on-track for most of the weeks but we ran into multiple issues at times and had to spent extra hours in resolving them. Listing out the few major issues or challenges we faced</br></br>
+<b><font color = "Black">Sensor setup:</font></b> Setting up the sensor was the first part of the project and it apparently took more time than expected. We understood the ultrasonic working and made the connections quickly but it wasn’t detecting any obstacle as were not able to observe any callback event to ECHO pin of RPi0. We tried different delay times, used different types of objects but it didnt help. We tried different power supplies for the sensor but that also didnt help. As advised by the professor, we also checked previous years projects to see if our code was having bugs, but we didnt find anything suspicious. Finally we changed the breadboard also to make sure we are not missing out on anything, which didnt help either. At the end, we decided to use a different sensor which made the difference. It means that everything was right with the circuit and the code, and only non-working component was the sensor itself. We learnt that we should try replacing the most critical component first whenever the things go wrong. </br></br>
+	
+2.<b> <font color = "Black">Charlieplexing:</font></b> The display system at the client side, which was based on charlieplexing of 4-pings, turned out to be more complex than expected. We first implemented the circuit on breadboard and tested it thoroughly. Then we moved on to implement it on the PCB via soldering. It took a significant amount of effort to finish the whole implementation but unfortunately few of the LEDs were not working properly at the end. Luckily, we didnt remove the breadboard circuit which we implemented at the start, and simply replaced it PCB board with it. We would have preferred to have used PCB since it is more robust but the with proper wire insulation and bread-boarding, we were able to make the breadboard work perfectly.</br></br>
+
+3. <b><font color = "Black">RPi-3 crashdown:</font></b> We ran into a major logistic issue just three hours before the demo. Our system was working perfectly and we were giving the final touch-ups to our design when we ran into that issue. We suddenly observed that the Raspberry-Pi 3 (base station) is not able to receive messages via bluetooth. On rebooting the board and running startx command, it gave  the error’ Xinit server failed‘. We were out of ideas at that time on how to debug the issue. Luckily, we had been pushing our codes on github regularly and we also had backups from our previous labs. So we took the backup of Lab3 which had non-RT based kernel and pulled the code from github. We had to spend some more time in re-installing bluetooth libraries and setting up the connection with the client but we were able to get the system up and running within time.</br></br>
+
+4. <b><font color = "Black">Out-of-range sensor values:</font></b>We observed a peculiar behaviour while sensing the water-level and sending it via bluetooth. Initially, both the RPIs were connected to the monitors to properly track the values being received from the ultrasonic sensor and the values received by the server. At that time, the values were very accurate and varied according to the water-level changes. But as we removed the monitor from the client RPi, we observed a significant noise in the sensor readings. The observation was 100% reproducible i.e. as the monitor was connected back, the sensor values became proper and noise came back when monitor was disconnected. As discussed with the professor, we think the RPi is waiting for an HDMI connection by default which might cause some unbounded delay in sensor processing. When HDMI is connected, the wait is avoided and sensor might be getting more processing time by CPU. We could have tried to configure the HDMI setting in the board but couldn’t do it due to the lack of time.</br>
+</p>
+
+
+</section>
+	</body >
+</html>
