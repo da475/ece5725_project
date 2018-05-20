@@ -70,7 +70,7 @@
 
                     Additionally, there is also a server near the flood wall which is integrated with the sensor system using bluetooth communication. This common server can be utilised to easily integrate multiple sensor systems like fish detection, oxygen level detection etc at a later stage. The water level information collected from the sensor is displayed using animations and graphic from pygames library.</br></br>
 
-                    <img src="System_block_diagram1.JPG" width="800pix" Height="500pix" alt="" /><i>Figure 1: System 3-D Block Diagram</i> <br/> 
+                    <img src="System_block_diagram1.JPG" width="800pix" Height="500pix" alt="" /><i></br>Figure 1: System 3-D Block Diagram</i> <br/> 
 </p>
 									<p>Further the system is divided into sub-parts. Each of which will be explained in detail below.</br>
 
@@ -81,11 +81,11 @@
 									    </p>
 
       <h4> 1. Sensor System </h4></br>
-<p>This project utilizes a ultrasonic sensor which is integrated into the system to detect the water-level of the river. The HC-SR04 ultrasonic module provides 2cm - 400cm non-contact measurement function with a ranging accuracy of about 3mm. The module includes ultrasonic transmitter, receiver and a control circuit. The sensor is activated by sending a 10 Î¼s pulse from theRPi0 module. The ultrasonic sensor gives back an echo response when it detects an obstacle within the specified distance by the user.</br>
-We have built a voltage divider circuit for the ultrasonic sensor to reduce the 5 voltage echo pulses to 3.V, as the echo pulse is captured by the R-pi pin which is set as a Input pin. We have designed the voltage divider with 330 ohm and 1K ohm resistors as shown in the figure-2
-<img src="voltage_divider.png" width="500pix" Height="400pix" alt="" /><i>Figure-2: Voltage Divider Schematic</i> <br/> </br>
+<p>This project utilizes a ultrasonic sensor which is integrated into the system to detect the water-level of the river. The HC-SR04 ultrasonic module provides 2cm - 400cm non-contact measurement function with a ranging accuracy of about 3mm. The module includes ultrasonic transmitter, receiver and a control circuit. The sensor is activated by sending a 10 us pulse from the RPi0 module. The ultrasonic sensor gives back an echo response when it detects an obstacle within the specified distance by the user.</br>
+We have built a voltage divider circuit for the ultrasonic sensor to reduce the 5V echo pulses to 3V, as the echo pulse is captured by the R-pi pin which is set as an input pin. We have designed the voltage divider with 330 ohm and 1K ohm resistors as shown in the figure-2
+<img src="voltage_divider.png" width="500pix" Height="400pix" alt="" /><i></br>Figure-2: Voltage Divider Schematic</i> <br/> </br>
 As shown in the figure-3, the sensor was placed on top of the pipe assembly. The object used to detect the water-level were ping-pong balls since they were uniform, light-weight and fit perfectly into the pipe assembly.</br></br>
-<img src="sensor.JPG" rotate="90" width="350pix" Height="450pix"></br><i>Figure-3: Ultrasonic Sensor Mounted on top of the pipe </i> </br> </br>
+<img src="sensor.JPG" rotate="90" width="350pix" Height="450pix"></br><i></br>Figure-3: Ultrasonic Sensor Mounted on top of the pipe </i> </br> </br>
 <b>Callback mechanism:</b></br>
 The reading of the sensor values was done using callback mechanism on one of the RPi GPIO pins. The pin connected to the ECHO port of the sensor was registered to a callback function using the following command:</br>
   <i>gp.add_event_detect(pin_quit, gp.BOTH, callback=gp18_cb, bouncetime=300)</i></br>
@@ -94,9 +94,9 @@ One important observation to make here is the event detection type is ‘BOTH’
  </p>
 
       <h4>2. Display Wall </br></h4></br>
-<p> The flood wall display was prototyped using PyGame python library. Pygame is a library of python modules made for designing video games which includes computer graphics and sound libraries suitable to be used with the python programming language. It is essentially built over the Simple DirectMedia Layer (SDL) library that allows building real time computer games without the need of low level mechanics of the C programming language and its derivates. It also includes built in functions pertaining to vector math, camera, collision detection. Pixel array manipulation and filtering and many others. Basically, it makes writing games and other graphic intensive programs very easy.</br>
-The display tasks which were done as part of lab exercises helped significantly to implement the flood wall quickly. The flood wall consists of following main components (as shown in attached figure-4 </br>
-<b><font color = "Black">Water level:</font></b> The water level was indicated in blue, which went up or down according to the increase or decrease of the water level
+<p> The flood wall display was prototyped using PyGame python library. Pygame is a library of python modules made for designing video games which includes computer graphics and sound libraries suitable to be used with the python programming language. It is essentially built over the Simple DirectMedia Layer (SDL) library that allows building real time computer games without the need of low level mechanics of the C programming language and its derivates. It also includes built in functions pertaining to vector math, camera, collision detection, pixel array manipulation and filtering and many others. Basically, it makes writing games and other graphic intensive programs very easy.</br>
+The display tasks which were done as part of lab exercises helped significantly to implement the flood wall quickly. The flood wall consists of following main components (as shown in figure-4) </br>
+<b><font color = "Black">Water level:</font></b> The water level was indicated in blue, which went up or down according to the increase or decrease of the water level.
 Flood stage menu: On the left-top side of the display, there is a menu which indicates the current stage based on the water-level. There are seven stages divided from 0.5 inches to 4.5 inches, and were named as</br>
 <i>0 to 1.5 inches  → No Flood</br>
 1.5 to 2.0 inches → Moderate flood stage-1</br>
@@ -107,8 +107,8 @@ Flood stage menu: On the left-top side of the display, there is a menu which ind
 4.0 to 4.5 inches → Critical flood stage-1</i></br>
 <b><font color = "Black">Current level:</font></b> The top-right side of the display indicates the current water-level in inches whose range is from 0.5 inches to 4.5 inches</br>
 
-<b><font color = "Black">Note:</font></b> The fish being displayed is American Shad species has a cultural history of the people living in the Susquehanna River basin through three centuries. the American shad population in the river was almost destroyed in the mid-nineteenth century by the construction of dams. However, concerned citizens began rebuilding the shad population in 1950, and the continuing conservation efforts are proving successful in bringing the American shad back to the Susquehanna. This account of the rise, fall, and restoration of the shad population in the Susquehanna and its tributaries is a fascinating story of history, politics, technology, economics, sports, and environmentalism. It is also an inspiring tale of how human beings, once recognizing the damage they have done to the natural environment, can work to overcome the despoliation they have caused.</br>
- <img src="display.png" width="650pix" Height="400pix" alt="" /><i>Figure-4: Display near the flood wall</i> <br/>
+<b><font color = "Black">Note:</font></b> The fish being displayed is American Shad species has a cultural history of the people living in the Susquehanna River basin through three centuries. The American shad population in the river was almost destroyed in the mid-nineteenth century by the construction of dams. However, concerned citizens began rebuilding the shad population in 1950, and the continuing conservation efforts are proving successful in bringing the American shad back to the Susquehanna. This account of the rise, fall, and restoration of the shad population in the Susquehanna and its tributaries is a fascinating story of history, politics, technology, economics, sports, and environmentalism. It is also an inspiring tale of how human beings, once recognizing the damage they have done to the natural environment, can work to overcome the despoliation they have caused.</br>
+ <img src="display.png" width="650pix" Height="400pix" alt="" /><i></br>Figure-4: Display near the flood wall</i> <br/>
 
 </br></p>
 
@@ -149,20 +149,20 @@ Once client finishes, it closes the connection:</br>
     <i>client_socket.close()</i></br>
 Server receives a blank message, which is the indication of the client closure and closes the connection:</br>
     <i>server_socket.close()</i></br>
-    <img src="Bluetooth_Block_Diagram.JPG" width="500pix" Height="400pix" alt="" /><i>Figure-5: Bluetooth: Server-Client Block Diagram</i> <br/> 
+    <img src="Bluetooth_Block_Diagram.JPG" width="500pix" Height="400pix" alt="" /><i></br>Figure-5: Bluetooth: Server-Client Block Diagram</i> <br/> 
 
  </p>
 
 
       <h4> 4.Responsive LED System </h4></br>
-<p> In this project we needed a way to get mulyiple LED's working from relatively low number of R-pi pins. Prof Skovira suggested us to use charliplexing technique to achieve the above goal. </br></br>
+<p> In this project we needed a way to get multiple LED's working from relatively low number of R-pi pins. Prof Skovira suggested us to use charliplexing technique to achieve the above goal. </br></br>
 
 Charlieplexing is a technique for driving a multiplexed display in which relatively few I/O pins on a microcontroller are used e.g. to drive an array of LEDs.
 The method uses the tri-state logic capabilities of microcontrollers in order to gain efficiency over traditional multiplexing. Although it is more efficient in its use of I/O, there are issues that cause it to be more complicated to design and render it impractical for larger displays. </br></br>
 
-For this project we needed 12 LED's , essentially 2 for each flood range which would corresondingly glow when the water level reaches that particular range as shown in the figure-6 below. Using charlieplexing we got 12 LED's working from 4 R-pi pins. The schematic and description for the circuit is shown below: </br></br>
+For this project we needed 12 LEDs, essentially 2 for each flood range which would correspondingly glow when the water level reaches that particular range as shown in the figure-6 below. Using charlieplexing we got 12 LED's working from 4 R-pi pins. The schematic and description for the circuit is shown: </br></br>
 
-<img src="LED GLOWING PATTERN PICTURE.JPG" width="500pix" Height="400pix" alt="" /><i>Figure-6: LED Glowing Pattern </i> <br/></br>
+<img src="LED_GLOWING.JPG" width="500pix" Height="400pix" alt="" /></br><i>Figure-6: LED Glowing Pattern </i> <br/></br>
 
 This can be achieved by utilizing the tri-state logic properties of microcontroller pins. Microcontroller pins generally have three states: "high" (5 V), "low" (0 V)and "input". Input mode puts the pin into a high-impedance state, which, electrically speaking, "disconnects" that pin from the circuit, meaning little or no current will flow through it. This allows the circuit to see any number of pins connected at any time, simply by changing the state of the pin. In order to drive the twelve-LED matrix above, the two pins corresponding to the LED to be lit are connected to 5 V (I/O pin "high" = binary number 1) and 0 V (I/O pin "low" = binary 0), while the third and fourth pins are set in their input state.</br></br>
 
@@ -173,7 +173,7 @@ By using tri-state logic, the matrix can theoretically be expanded to any size, 
 
 <img src="schematic_charlie.JPG" width="500pix" Height="400pix" alt="" /><i>Figure-7: Schematic of 4 pin Charlieplexing Circuit </i> <br/></br>
 
-<img src="breadboard.JPG" width="400pix" Height="600pix" alt="" /><i>Figure-8: Practical Implementation on Breadboard </i> <br/></br>
+<img src="pic12.JPG" width="600pix" Height="400pix" alt="" /><i></br>Figure-8: Practical Implementation on Breadboard </i> <br/></br>
 
   </p>
 									
